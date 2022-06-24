@@ -94,7 +94,7 @@ export default function AuthForm(props) {
               autoComplete="current-password"
             />
             {error && error.response && <div>{error.response.data}</div>}
-            <Button
+            {/* <Button
               type="submit"
               fullWidth
               variant="contained"
@@ -102,7 +102,8 @@ export default function AuthForm(props) {
               className={classes.submit}
             >
               {displayName}
-            </Button>
+            </Button> */}
+            <button className="postBox_button">{displayName}</button>
             {name === "login" ? (
               <Grid container>
                 <Grid item>

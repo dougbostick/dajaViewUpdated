@@ -53,7 +53,7 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route exact path="/" component={LandingPage} />
+            {/* <Route exact path="/" component={Home} /> */}
             <Route>
               <Navbar />
               <div id="mainDiv" style={{ display: 'flex' }}>
@@ -89,7 +89,7 @@ class Routes extends Component {
           </Switch>
         ) : (
           <Switch>
-            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/" component={Login} />
             <Route>
               <Switch>
                 {/* <Route path="/" exact component={Login} /> */}

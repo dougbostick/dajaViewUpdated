@@ -42,31 +42,31 @@ async function seed() {
 
   //creating sample posts
 
-  const posts = await Promise.all([
-    Posts.create({
-      content: 'this is a post for test angel',
-      userId: angel.id,
-      username: angel.username,
-      avatarUrl: angel.avatarUrl,
-    }),
-    Posts.create({
-      content: 'this is a post for test anna',
-      userId: anna.id,
-      username: anna.username,
-    }),
-    Posts.create({
-      content: 'this is a post for test doug',
-      userId: doug.id,
-      username: doug.username,
-    }),
-    Posts.create({
-      content: 'this is a post for test jiayu',
-      userId: jiayu.id,
-      username: jiayu.username,
-    }),
-  ]);
+  // const posts = await Promise.all([
+  //   Posts.create({
+  //     content: 'this is a post for test angel',
+  //     userId: angel.id,
+  //     username: angel.username,
+  //     avatarUrl: angel.avatarUrl,
+  //   }),
+  //   Posts.create({
+  //     content: 'this is a post for test anna',
+  //     userId: anna.id,
+  //     username: anna.username,
+  //   }),
+  //   Posts.create({
+  //     content: 'this is a post for test doug',
+  //     userId: doug.id,
+  //     username: doug.username,
+  //   }),
+  //   Posts.create({
+  //     content: 'this is a post for test jiayu',
+  //     userId: jiayu.id,
+  //     username: jiayu.username,
+  //   }),
+  // ]);
 
-  console.log(`seeded ${posts.length} posts`);
+  // console.log(`seeded ${posts.length} posts`);
 
   const users = [cody, murphy, doug, angel, anna, jiayu];
 
