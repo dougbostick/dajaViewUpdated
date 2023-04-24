@@ -343,7 +343,7 @@ nav a {
 .post_body {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 10px 0px 0px;
 }
 
 .post_footer {
@@ -357,11 +357,9 @@ nav a {
 }
 
 .post_headerDesc {
-  margin-bottom: 10px;
   font-size: 15px;
   margin-left: 10px;
-  margin-top: 10px;
-  padding: 10px;
+  padding: 5px 5px 5px 20px;
 }
 
 .post_headerText > h3 {

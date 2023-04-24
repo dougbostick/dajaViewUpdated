@@ -15,8 +15,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     // flex: '5',
     width: '75%',
-    marginTop: '50px',
-    marginLeft: '15px',
     display: 'flex',
     margin: '0 auto',
     justifyContent: 'center',

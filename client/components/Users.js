@@ -44,13 +44,13 @@ function Users(props) {
 
   return (
   
-    <Container style={{paddingTop:'50px', width:'100%', margin: '0 auto', marginLeft:'470px'}}>
+    <Container style={{paddingTop:'50px', width:'100%', margin: '0 auto'}}>
       <h1 style={{textAlign: 'center'}}>Explore Users</h1>
       <TextField id="standard-basic" value={filter} label={`Search for people`} onChange={(ev)=> setFilter(ev.target.value)}/>
       <Button className={classes.button} onClick={()=>{setFilter('')}}>clear</Button>
       <br/>
       
-      <Grid container spacing={4} style={{paddingTop:'50px'}}>
+      <Grid container spacing={4}>
         {searchUsers.map(user=>{
 
           const relExists = relationships.find(rel=>(rel.senderId === user?.id && rel.recipientId === auth.id) || (rel.recipientId === user?.id && rel.senderId === auth.id))

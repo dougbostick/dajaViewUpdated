@@ -36,7 +36,7 @@ function Chat(props){
 
   return(
     <Box sx={{ flexGrow: 1, marginTop:'25px', paddingRight:'25px', paddingLeft:'25px' }}>
-      <Grid container className="App" columns={12} style={{width:'50%', margin:'0 auto'}}>
+      <Grid container className="App" columns={12} style={{ margin:'0 auto'}}>
         <Grid item xs={8}><Chatroom socket={socket} username={auth.username} otherUser={otherUser.id?otherUser:friends[0]} room={room?room:joinRoom(friends[0].username, friends[0])} /></Grid>
         <Grid item xs={4}>
           <Card style={{height:'63vh', border:'1px solid black', borderLeft:'none'}}>

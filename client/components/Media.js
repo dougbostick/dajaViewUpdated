@@ -90,7 +90,7 @@ class Media extends React.Component{
     if(!media.results) loadMedia({...this.state})
   
     return (
-      <div style={{marginLeft:'200px'}}>
+      <div>
         <h1 style={{textAlign:'center', marginTop:'25px'}}>Search media</h1>
         <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', backgroundColor: 'rgb(253 251 251)', width: '50%', margin: '0 auto'}}>
           <BasicSelects media={{movie:'Movies', tv:'TV Shows'}} onChangeValue={this.handleChangeValue} style={{display:'none'}}/>
@@ -99,6 +99,10 @@ class Media extends React.Component{
           <MultipleSelect genres={this.state.genres} media={this.state.media} nameSearch={this.state.nameSearch} peopleSearch={this.state.peopleSearch} setNewGenres={this.setNewGenres} onChangeValue={this.handleGenreChange}/>
         </div>
         <div className={classes.root} style={{flexDirection:'column', width:'65%', alignItems:'center', margin:'0 auto'}}>
+        <Pagination count={media.total_pages>500?500:media.total_pages} page={this.state.page} onChange={(ev, page) => {
+                this.setState({ page:page})
+                loadMedia({...this.state, page})}}
+            style={{display:'flex', margin: '0 auto', alignSelf: 'center'}} size='large'   />
         <ImageList rowHeight={'auto'} gap={25} className={classes.imageList}>
           <ImageListItem key="Subheader" cols={5} style={{ height:'300' }}>
             <ListSubheader component="div">Total results:{media.total_results>10000?10000:media.total_results}
@@ -128,10 +132,6 @@ class Media extends React.Component{
           ))}
           
         </ImageList>
-        <Pagination count={media.total_pages>500?500:media.total_pages} page={this.state.page} onChange={(ev, page) => {
-                this.setState({ page:page})
-                loadMedia({...this.state, page})}}
-            style={{display:'flex', height:'200px', margin: '0 auto', alignSelf: 'center'}} size='large'   />
       </div>
       </div>
     );

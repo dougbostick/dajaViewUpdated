@@ -101,11 +101,9 @@ class SingleMedia extends React.Component {
     };
 
     return (
-      // <div>
-        <div>
-       
+      <div>
        <h2 className='singlemediatitle'>{media.title}</h2>
-        <div className='singlemediacontainer' style={{width:'70%', margin:'0 auto', marginLeft:'460px'}}>
+        <div className='singlemediacontainer' style={{width:'70%', margin:'0 auto'}}>
           <div className='singlemediaimage'>
             <img className='singlemediaposter'
               src={
@@ -122,7 +120,7 @@ class SingleMedia extends React.Component {
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                 >
-                  <Typography>Show what others thought!</Typography>
+                  <Typography>See what others thought!</Typography>
                 </AccordionSummary>
                   {ratings.length
                     ? ratings.map((item) => {
@@ -233,7 +231,6 @@ class SingleMedia extends React.Component {
           </div>
         </div>
         </div>
-      // </div>
     );
   }
 }

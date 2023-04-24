@@ -83,7 +83,7 @@ function MuiNav(props) {
 
   return (
     // <div className='fixed'>
-    <div className="contents" style={{position: 'fixed'}}>
+    <div className="contents" style={{display:'flex'}}>
       {auth.id ? (
         <div display="flex" flexdirection="row" className="muiNav">
           <div flexgrow={0}>
@@ -93,10 +93,9 @@ function MuiNav(props) {
               style={{
                 background: 'rgb(253 251 251)',
                 boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)',
-                marginTop: '50px',
-                marginLeft: '90px',
                 paddingBottom: '10px',
-                borderRadius: '5px'
+                borderRadius: '5px',
+                marginTop:'10px'
               }}
             >
               {/* <Typography className={classes.title} variant="h6" noWrap style={{ fontWeight: '300', fontFamily: 'BlinkMacSystemFont'}}>
