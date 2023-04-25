@@ -14,10 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
-
-// const socket = io.connect(`http://localhost:8080`)
 const socket = io.connect(`${process.env.WEBSITE}`)
-
 
 function Chat(props){
   const [room, setRoom] = useState('')
@@ -28,16 +25,18 @@ function Chat(props){
   const joinRoom =(username, user)=>{
     const room = auth.id > user.id?`${auth.id}&${user.id}`:`${user.id}&${auth.id}`
     if(username !== '' && room !== ''){
-      socket.emit('join_room', {room, username})
+      socket.emit('join_room', room)
     }
+    console.log(`joined room ${room}`)
+    return room
   }
   
   if(!friends[0]) return <div>Add some friends to chat with!</div>
-
+  
   return(
     <Box sx={{ flexGrow: 1, marginTop:'25px', paddingRight:'25px', paddingLeft:'25px' }}>
       <Grid container className="App" columns={12} style={{ margin:'0 auto'}}>
-        <Grid item xs={8}><Chatroom socket={socket} username={auth.username} otherUser={otherUser.id?otherUser:friends[0]} room={room?room:joinRoom(friends[0].username, friends[0])} /></Grid>
+        <Grid item xs={8}><Chatroom socket={socket} username={auth.username} otherUser={otherUser.id?otherUser:friends[0]} room={room || joinRoom(friends[0].username, friends[0])} /></Grid>
         <Grid item xs={4}>
           <Card style={{height:'63vh', border:'1px solid black', borderLeft:'none'}}>
             <CardContent>

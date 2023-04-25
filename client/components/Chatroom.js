@@ -1,8 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react'
 import ScrollToBottom from 'react-scroll-to-bottom'
-import {updateChat, loadChats} from '../store'
+import {updateChat} from '../store'
 import { connect } from 'react-redux';
-import { Button } from '@material-ui/core';
 
 function usePrevious(value) {
   const ref = useRef();
@@ -17,19 +16,22 @@ const Chatroom = ({socket, username, room, otherUser, chats, updateChat, auth})=
   const [currentMessage, setCurrentMessage] = useState('')
   const thisChat = chats.find(chat=>(chat.user1Id === auth.id && chat.user2Id === otherUser.id) || (chat.user2Id === auth.id && chat.user1Id === otherUser.id))
   const [messageList, setMessageList] = thisChat?.messages?useState(JSON.parse(thisChat.messages)):useState([])
+
   const prevMessageList = usePrevious(messageList)
   const prevOtherUser = usePrevious(otherUser)
   const prevThisChat = usePrevious(thisChat)
+
   const sendMessage = async()=>{
     if(currentMessage !== ''){
       const messageData ={
-        room:room,
+        room,
         author:username,
         message:currentMessage,
         time: new Date(Date.now()).getHours() + ':' + new Date(Date.now()).getMinutes()
       }
 
       await socket.emit('send_message', messageData)
+      console.log('message sent')
       setMessageList((list)=>[...list, messageData])
       setCurrentMessage('')
     }
@@ -39,7 +41,6 @@ const Chatroom = ({socket, username, room, otherUser, chats, updateChat, auth})=
     if(prevMessageList !== messageList && messageList?.length) updateChat(messageList, otherUser)
     if(!prevThisChat?.messages && thisChat?.messages) setMessageList(JSON.parse(thisChat.messages))
     if(prevOtherUser  && (prevOtherUser !== otherUser)){
-      socket.disconnect()
       thisChat?.messages?setMessageList(JSON.parse(thisChat.messages)):setMessageList([])
     }
   })
@@ -47,6 +48,7 @@ const Chatroom = ({socket, username, room, otherUser, chats, updateChat, auth})=
   useEffect(()=>{
     socket.on('receive_message', (data)=>{
       setMessageList((list)=>[...list, data])
+      console.log('message received')
     })
   }, [socket])
 

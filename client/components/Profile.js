@@ -40,7 +40,7 @@ const Profile = (props) => {
   return (
     <>
       {user?.id === auth.id ? (
-        <div className="profilePage" style={{marginLeft:'450px'}}>
+        <div className="profilePage">
           <div className="center">
             <div className="topProfile">
               <div className="wallpaper">
