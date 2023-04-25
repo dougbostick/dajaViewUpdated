@@ -3,8 +3,19 @@ const {
   models: { Chat, User },
 } = require('../db');
 module.exports = router;
+require('dotenv').config();
 
 const Op = require("sequelize").Op;
+
+router.get('/website', async (req, res, next) => {
+  try{
+    const websiteUrl = process.env.WEBSITE
+    console.log(websiteUrl)
+    res.json(websiteUrl);
+  } catch(err) {
+    next(err)
+  }
+})
 
 router.get('/', async (req, res, next) => {
   try {

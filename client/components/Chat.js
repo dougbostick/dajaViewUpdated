@@ -3,7 +3,6 @@ import React, {useState} from 'react'
 import Chatroom from './Chatroom'
 import { connect } from 'react-redux';
 import { Button, Grid, Box } from '@material-ui/core';
-import Users from './Users'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
@@ -13,8 +12,13 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import axios from 'axios';
 
-const socket = io.connect(`${process.env.WEBSITE}`)
+const getWebsite = async () => {
+  return await axios.get('/api/chats/website')
+}
+
+const socket = io.connect(getWebsite() || 'http://localhost:8080')
 
 function Chat(props){
   const [room, setRoom] = useState('')
